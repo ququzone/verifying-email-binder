@@ -27,11 +27,6 @@ async fn main() {
         signer: env::var("SIGNER").expect("SIGNER must be set"),
     };
 
-    sqlx::migrate!()
-        .run(&context.db)
-        .await
-        .expect("migrate database error");
-
     tokio::spawn(async move {
         let smtp_password = env::var("SMTP_PASSWORD").expect("SMTP_PASSWORD must be set");
         let smtp_user = env::var("SMTP_USER").expect("SMTP_USER must be set");

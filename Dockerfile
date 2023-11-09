@@ -4,8 +4,6 @@ FROM rust:${RUST_VERSION}-slim-bullseye AS build
 ARG APP_NAME
 WORKDIR /app
 
-ENV DATABASE_URL=${DATABASE_URL}
-
 RUN apt-get update \
     && apt-get install pkg-config libssl-dev -y \
     && apt-get clean
