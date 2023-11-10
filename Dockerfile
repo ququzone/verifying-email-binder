@@ -19,6 +19,10 @@ EOF
 
 FROM debian:bullseye-slim AS final
 
+RUN apt-get update \
+    && certificates -y \
+    && apt-get clean
+
 ARG UID=10001
 RUN adduser \
     --disabled-password \
