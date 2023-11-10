@@ -20,7 +20,7 @@ EOF
 FROM debian:bullseye-slim AS final
 
 RUN apt-get update \
-    && ca-certificates -y \
+    && apt-get install ca-certificates -y \
     && apt-get clean
 
 ARG UID=10001
