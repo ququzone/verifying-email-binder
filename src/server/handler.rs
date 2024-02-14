@@ -6,7 +6,7 @@ use axum::{
     Json, Router, Server,
 };
 use futures::{future, FutureExt};
-use hyper::{header, server::conn::AddrIncoming, Method};
+use hyper::{server::conn::AddrIncoming, Method};
 use serde::de::DeserializeOwned;
 use tower_http::{
     cors::{AllowHeaders, AllowOrigin, CorsLayer},
@@ -128,7 +128,6 @@ where
             CorsLayer::new()
                 .allow_origin(AllowOrigin::any())
                 .allow_headers(AllowHeaders::any())
-                .allow_credentials(true)
                 .allow_methods(vec![Method::GET, Method::POST, Method::OPTIONS]),
         )
         .into_make_service();
